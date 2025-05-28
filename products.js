@@ -17,14 +17,15 @@ function filterProducts(products, callback) {
 
 function sortInventory(inventory, key) {
     if (!Array.isArray(inventory) || typeof key !== 'string') return [];
-    // TODO: Implement sorting logic
-    return [...inventory].sort((a, b) => {
-        if (a[key] === undefined || b[key] === undefined) return 0;
-        if (a[key] < b[key]) return -1;
-        if (a[key] > b[key]) return 1;
-        return 0;
+    return inventory.sort(function (a, b) {
+        if (a[key] < b[key]) {
+            return -1;
+        } else if (a[key] > b[key]) {
+            return 1;
+        } else {
+            return 0;
+        }
     });
-
 }
 
 const productArray = [
@@ -37,8 +38,8 @@ const productArray = [
 
 const inventoryArray = [
     { Name: "Tv", Price: 400 },
-    { Name: "Xbox 360", Price: 250},
-    {Name: "Headphones", Price: 100}
+    { Name: "Xbox 360", Price: 250 },
+    { Name: "Headphones", Price: 100 }
 ];
 
 //console.log(sortInventory(inventoryArray, "Name"));
